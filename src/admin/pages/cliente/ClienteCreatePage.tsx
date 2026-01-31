@@ -25,7 +25,7 @@ export const ClienteCreatePage = () => {
               duration: 3000
             });
             // Redirigir a la vista del nuevo cliente
-            navigate(`/clientes/${response.resultado.clienteId}`);
+            navigate(`/admin/clientes/${response.resultado.clienteId}`);
           } else {
             toast.error(response.mensaje || 'Error al crear el cliente', {
               position: 'top-right',
@@ -49,7 +49,7 @@ export const ClienteCreatePage = () => {
   };
 
   const handleCancel = () => {
-    navigate('/clientes');
+    navigate('/admin/clientes');
   };
 
   return (

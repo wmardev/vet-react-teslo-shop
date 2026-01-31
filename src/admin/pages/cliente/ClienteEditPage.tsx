@@ -21,7 +21,7 @@ export const ClienteEditPage = () => {
         telefono: clienteLike.telefono || "",
         direccion: clienteLike.direccion || "",
         fechaNacimiento: clienteLike.fechaNacimiento || "",
-        ubicacionGps: clienteLike.ubicacionGps || ""
+        ubicacionGps: clienteLike.ubicacionGps || "",
       };
 
       await mutation.mutateAsync(dataToSubmit, {
@@ -31,7 +31,7 @@ export const ClienteEditPage = () => {
               position: "top-right",
               duration: 3000,
             });
-            navigate(`/clientes/${id}`);
+            navigate(`/admin/clientes/${id}`);
           } else {
             toast.error(response.mensaje || "Error al actualizar el cliente", {
               position: "top-right",
@@ -55,7 +55,7 @@ export const ClienteEditPage = () => {
   };
 
   const handleCancel = () => {
-    navigate(`/clientes/${id}`);
+    navigate(`/admin/clientes/${id}`);
   };
 
   // Manejo de errores
@@ -64,7 +64,7 @@ export const ClienteEditPage = () => {
       position: "top-right",
       duration: 5000,
     });
-    return <Navigate to="/clientes" />;
+    return <Navigate to="/admin/clientes" />;
   }
 
   if (isLoading) {
@@ -76,7 +76,7 @@ export const ClienteEditPage = () => {
       position: "top-right",
       duration: 3000,
     });
-    return <Navigate to="/clientes" />;
+    return <Navigate to="/admin/clientes" />;
   }
 
   return (
