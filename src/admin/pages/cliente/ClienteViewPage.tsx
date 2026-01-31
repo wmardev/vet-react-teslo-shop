@@ -14,11 +14,11 @@ export const ClienteViewPage = () => {
   const { data, isLoading, isError } = useCrudCliente(id || "");
 
   const handleEdit = () => {
-    navigate(`/admin/clientes/${id}/editar`);
+    navigate(`/clientes/${id}/editar`);
   };
 
   const handleBack = () => {
-    navigate("/admin/clientes");
+    navigate("/clientes");
   };
 
   // Manejo de errores
@@ -27,7 +27,7 @@ export const ClienteViewPage = () => {
       position: "top-right",
       duration: 5000,
     });
-    return <Navigate to="/admin/clientes" />;
+    return <Navigate to="/clientes" />;
   }
 
   if (isLoading) {
@@ -39,7 +39,7 @@ export const ClienteViewPage = () => {
       position: "top-right",
       duration: 3000,
     });
-    return <Navigate to="/admin/clientes" />;
+    return <Navigate to="/clientes" />;
   }
 
   return (

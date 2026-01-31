@@ -31,7 +31,7 @@ export const ClienteEditPage = () => {
               position: "top-right",
               duration: 3000,
             });
-            navigate(`/admin/clientes/${id}`);
+            navigate(`/clientes/${id}`);
           } else {
             toast.error(response.mensaje || "Error al actualizar el cliente", {
               position: "top-right",
@@ -55,7 +55,7 @@ export const ClienteEditPage = () => {
   };
 
   const handleCancel = () => {
-    navigate(`/admin/clientes/${id}`);
+    navigate(`/clientes/${id}`);
   };
 
   // Manejo de errores
@@ -64,7 +64,7 @@ export const ClienteEditPage = () => {
       position: "top-right",
       duration: 5000,
     });
-    return <Navigate to="/admin/clientes" />;
+    return <Navigate to="/clientes" />;
   }
 
   if (isLoading) {
@@ -76,7 +76,7 @@ export const ClienteEditPage = () => {
       position: "top-right",
       duration: 3000,
     });
-    return <Navigate to="/admin/clientes" />;
+    return <Navigate to="/clientes" />;
   }
 
   return (
