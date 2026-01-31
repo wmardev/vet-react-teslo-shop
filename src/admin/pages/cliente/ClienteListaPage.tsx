@@ -145,16 +145,6 @@ export const ClienteListaPage = () => {
     return <ArrowUpDown className="w-4 h-4 ml-1 text-gray-400" />;
   };
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("es-ES", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
   const formatPhone = (phone: string | null) => {
     if (!phone) return "Sin teléfono";
 

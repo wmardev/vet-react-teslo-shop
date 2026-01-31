@@ -21,9 +21,7 @@ export const ClienteEditPage = () => {
         telefono: clienteLike.telefono || "",
         direccion: clienteLike.direccion || "",
         fechaNacimiento: clienteLike.fechaNacimiento || "",
-        ubicacionGps: clienteLike.ubicacionGps || "",
-        activo: clienteLike.activo ?? true,
-        usuarioMod: "admin", // Obtener del contexto de autenticación real
+        ubicacionGps: clienteLike.ubicacionGps || ""
       };
 
       await mutation.mutateAsync(dataToSubmit, {

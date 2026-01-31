@@ -3,11 +3,6 @@ import {
   Home,
   Users,
   BarChart3,
-  Settings,
-  FileText,
-  ShoppingCart,
-  Bell,
-  HelpCircle,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
