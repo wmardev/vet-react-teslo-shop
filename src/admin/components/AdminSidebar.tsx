@@ -1,7 +1,12 @@
-import { Link, useLocation } from "react-router";
-import { Home, Users, ChevronLeft, ChevronRight } from "lucide-react";
-import { CustomLogo } from "@/components/custom/CustomLogo";
-import { useAuthStore } from "@/auth/store/auth.store";
+import { Link, useLocation } from 'react-router';
+import {
+  Home,
+  Users,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
+import { CustomLogo } from '@/components/custom/CustomLogo';
+import { useAuthStore } from '@/auth/store/auth.store';
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -15,11 +20,10 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
   const { pathname } = useLocation();
   const { user } = useAuthStore();
 
-  // Actualizado: Rutas relativas a la raíz ya que /admin ahora es /
   const menuItems = [
-    { icon: Home, label: "Dashboard", to: "/" },
-    { icon: Users, label: "Clientes", to: "/clientes" },
-    //{ icon: BarChart3, label: 'Productos', to: '/products' },
+    { icon: Home, label: 'Dashboard', to: '/admin' },
+    { icon: Users, label: 'Clientes', to: '/admin/clientes' },
+    //{ icon: BarChart3, label: 'Productos', to: '/admin/products' },
     //{ icon: Users, label: 'Usuarios' },
     //{ icon: ShoppingCart, label: 'Ordenes' },
     //{ icon: FileText, label: 'Reportes' },
@@ -29,28 +33,18 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
   ];
 
   const isActiveRoute = (to: string) => {
-    // Actualizado: Ya no necesitamos /admin en las rutas
-    if (pathname.includes("/products/") && to === "/products") {
+    // TODO: ajustarlo cuando estemos en la pantalla de producto
+    if (pathname.includes('/admin/products/') && to === '/admin/products') {
       return true;
     }
 
-    // Para la ruta raíz
-    if (to === "/" && pathname === "/") {
-      return true;
-    }
-
-    // Para rutas que no sean la raíz
-    if (to !== "/") {
-      return pathname.startsWith(to);
-    }
-
-    return false;
+    return pathname === to; // true, false
   };
 
   return (
     <div
       className={`bg-white border-r border-gray-200 transition-all duration-300 ease-in-out  ${
-        isCollapsed ? "w-18" : "w-64"
+        isCollapsed ? 'w-18' : 'w-64'
       } flex flex-col`}
     >
       {/* Header */}
@@ -72,11 +66,11 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
             return (
               <li key={index}>
                 <Link
-                  to={item.to}
+                  to={item.to || '/admin'}
                   className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200 group ${
-                    isActiveRoute(item.to)
-                      ? "bg-blue-50 text-blue-600 border-r-2 border-blue-600"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    isActiveRoute(item.to || '/xxxx')
+                      ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
                   <Icon size={20} className="flex-shrink-0" />
