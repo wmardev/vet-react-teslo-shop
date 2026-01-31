@@ -11,4 +11,22 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  // AÑADE ESTA SECCIÓN PARA PRODUCCIÓN
+  build: {
+    outDir: 'dist',
+    sourcemap: false, // Desactiva sourcemaps en producción
+    minify: 'terser', // Minificación agresiva
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
+    },
+  },
+  // PARA PREVENIR PROBLEMAS DE RUTAS
+  base: '/', // Asegura rutas absolutas correctas
+  server: {
+    port: 3000,
+  },
 });
